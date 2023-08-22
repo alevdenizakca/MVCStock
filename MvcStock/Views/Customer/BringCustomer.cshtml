@@ -1,0 +1,26 @@
+﻿@model MvcStock.Models.Entity.TMUSTERILER
+@{
+    ViewBag.Title = "BringCustomer";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@using (Html.BeginForm("Update", "Customer", FormMethod.Post))
+            {
+                <div style="display:none">
+                    @Html.LabelFor(m=>m.MUSTERIID)
+                    @Html.TextBoxFor(m=>m.MUSTERIID)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.MUSTERIAD)
+                    @Html.TextBoxFor(m => m.MUSTERIAD, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.MUSTERIAD, "", new { @style = "color:red" })
+                    <br />
+                    @Html.LabelFor(m => m.MUSTERISOYAD)
+                    @Html.TextBoxFor(m => m.MUSTERISOYAD, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.MUSTERISOYAD, "", new { @style = "color:red" })
+                </div>
+                <div>
+                    <button class="btn btn-warning">Müşteri Güncelle</button>
+                </div>
+            }
+

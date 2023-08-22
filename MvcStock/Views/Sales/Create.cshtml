@@ -1,0 +1,32 @@
+﻿@model MvcStock.Models.Entity.TSATISLAR
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<form method="post" action="/Sales/Create">
+    <div>
+        <label>
+            Ürün Adı
+        </label>
+        @Html.DropDownListFor(m => m.TURUNLER.URUNID, (List<SelectListItem>)ViewBag.products, new { @class = "form-control" })
+        <br />
+        <label>
+            Müşteri Adı Soyadı
+        </label>
+        @Html.DropDownListFor(m => m.TMUSTERILER.MUSTERIID, (List<SelectListItem>)ViewBag.customers, new { @class = "form-control" })
+        <br />
+        <label>
+            Adet
+        </label>
+        @Html.TextBoxFor(m => m.ADET, new { @class = "form-control" })
+        <br />
+        <label>
+            Fiyat
+        </label>
+        @Html.TextBoxFor(m => m.FIYAT, new { @class = "form-control" })
+        <br />
+        <button class="btn btn-info">Satış İşlemini Yap</button>
+    </div>
+</form>
+

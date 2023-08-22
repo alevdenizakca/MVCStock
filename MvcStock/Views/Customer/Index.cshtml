@@ -1,0 +1,35 @@
+﻿@using MvcStock.Models.Entity
+@model List<TMUSTERILER>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+@using (Html.BeginForm("Index", "Customer", FormMethod.Get))
+            {
+                @Html.TextBox("p")
+                <input type="submit" value="Ara" />
+            }
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th>Müşteri ID</th>
+        <th>Adı</th>
+        <th>Soyadı</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+    <tbody>
+        @foreach (var customer in Model)
+        {
+            <tr>
+                <th>@customer.MUSTERIID</th>
+                <td>@customer.MUSTERIAD</td>
+                <td>@customer.MUSTERISOYAD</td>
+                @*<td><a href="/Customer/Delete/@customer.MUSTERIID" class="btn btn-danger">Sil</a></td>*@
+            <td>@Html.ActionLink("Sil", "Delete", new { id = customer.MUSTERIID }, new { @class = "btn btn-danger", onclick = "return confirm('Silmek istediğinizden emin misiniz?')" })</td>
+                <td><a href="/Customer/BringCustomer/@customer.MUSTERIID" class="btn btn-success">Güncelle</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="/Customer/Create/" class="btn btn-primary">Yeni Müşteri Ekle</a>

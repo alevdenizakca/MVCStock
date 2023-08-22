@@ -1,0 +1,30 @@
+﻿@model MvcStock.Models.Entity.TURUNLER
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<form method="post" class="form-group">
+    <div>
+        <label>Ürün Adı</label>
+        <input type="text" name="URUNAD" class="form-control" required="" maxlength="30" placeholder="Ürün Adı Giriniz"/>
+    </div>
+    <div>
+        <label>Marka</label>
+        <input type="text" name="MARKA" class="form-control" required="" placeholder="Marka Adı Giriniz"/>
+    </div>
+    <div>
+        <label>Kategori Seçiniz</label>
+        @Html.DropDownListFor(m=>m.TKATEGORILER.KATEGORIID,(List<SelectListItem>)ViewBag.degerler, new {@class="form-control"})
+    </div>
+    <div>
+        <label>Fiyat</label>
+        <input type="number" name="FIYAT" class="form-control" min="0" step=".01" required="" placeholder="Ürün Fiyatı Giriniz"/>
+    </div>
+    <div>
+        <label>Stok Adeti</label>
+        <input type="number" name="STOK" class="form-control" required="" placeholder="Stok Adeti Giriniz"/>
+    </div>
+    <button style="margin-top:15px" class="btn btn-success">Ürün Ekle</button>
+</form>
+
